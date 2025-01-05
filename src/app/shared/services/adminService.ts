@@ -22,9 +22,4 @@ export class AdminService {
     public login(loginRequest: LoginRequest): Observable<LoginResponse> {
         return this.httpClient.post<LoginResponse>(`${this.pathService}/login`, loginRequest);
       }
-
-
-
-    
-
 }   

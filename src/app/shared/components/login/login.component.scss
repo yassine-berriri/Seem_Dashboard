@@ -1,0 +1,17 @@
+.login-back{
+    background-image: url('../../../../assets/images/loginBg.jpg');
+    background-size: cover;
+    height: 100vh; 
+    // overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.error-text{
+    color: red;
+}

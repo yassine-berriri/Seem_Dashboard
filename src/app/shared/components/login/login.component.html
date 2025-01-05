@@ -1,0 +1,36 @@
+<div class="login-back">
+    <p-card [style]="{ width: '25rem', overflow: 'hidden', padding: '2rem'}">
+        <ng-template  pTemplate="header">
+            <!-- <div  class="login-heder">
+                <img alt="Card" src="../../../../assets/images/seemLogo.jpg" /> 
+                <p>Se connecter</p>    
+            </div> -->
+        </ng-template>
+        <ng-template pTemplate="title"> Se connecter </ng-template>
+        <p>Veuillez entrer vos coordonnées</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+            <div>
+                <span class="p-input-icon-left my-2">
+                    <i class="pi pi-user"></i>
+                    <input id="username" formControlName="username" type="text" pInputText placeholder="Nom utilisateur">
+                </span>
+                <small>
+                    <p *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error-text">Champ obligatoire</p>
+                </small>
+            </div>
+            <div>
+                <span class="p-input-icon-left my-2">
+                    <i class="pi pi-key"></i>
+                    <input id="password" formControlName="password" type="password" pInputText placeholder="Mot de passe">
+                </span>
+                <small>
+                    <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-text">Champ obligatoire</p>
+                </small>
+            </div>
+            <div>
+                <p-button label="Se connecter" type="submit" [disabled]="!loginForm.valid" class="w-full" styleClass="w-full" />
+            </div>
+        </form>
+    </p-card>
+</div>
+
