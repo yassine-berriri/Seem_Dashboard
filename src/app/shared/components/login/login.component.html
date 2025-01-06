@@ -11,11 +11,11 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
             <div>
                 <span class="p-input-icon-left my-2">
-                    <i class="pi pi-user"></i>
-                    <input id="username" formControlName="username" type="text" pInputText placeholder="Nom utilisateur">
+                    <i class="pi pi-envelope"></i>
+                    <input id="email" formControlName="email" type="email" pInputText placeholder="Email utilisateur">
                 </span>
                 <small>
-                    <p *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error-text">Champ obligatoire</p>
+                    <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-text">Champ obligatoire</p>
                 </small>
             </div>
             <div>
@@ -32,5 +32,8 @@
             </div>
         </form>
     </p-card>
+    <!-- <p-messages [style]="{ top: '70px', right: '20px' , position:'absolute'}"
+    position="top-right"></p-messages> -->
+    <p-toast></p-toast>
 </div>
 

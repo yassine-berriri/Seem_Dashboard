@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrimeNgModule } from './shared/modules/PrimeNg.module';
@@ -9,14 +8,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './shared/components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AdminService } from './shared/services/adminService';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminDashboardComponent } from './core/admin-dashboard/admin-dashboard.component';  
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuBarComponent,
-    LoginComponent
+    LoginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +27,10 @@ import { AdminService } from './shared/services/adminService';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }
