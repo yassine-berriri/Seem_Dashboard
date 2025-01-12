@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { LoginResponse } from 'src/app/shared/interfaces/loginResponse.interface';
-import { AdminService } from 'src/app/shared/services/adminService';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-menu-bar',
@@ -11,25 +11,16 @@ import { AdminService } from 'src/app/shared/services/adminService';
 export class MenuBarComponent {
   items: MenuItem[] | undefined;
   
-  constructor(private adminService: AdminService) {
+  constructor(private router : Router) {
 
   }
 
   ngOnInit() {
+    this.items = [{label: 'Seem Dashboard',},];
+  }
 
-    const loginRequest = { email: 'admin@gmail.com', password: 'admin' };
-    this.adminService.login(loginRequest).subscribe({
-      next: (respone: LoginResponse) => {
-        console.log(respone);
-      }
-    })
-
-      this.items = [
-          {
-              label: 'Seem Dashboard',
-           
-          },
-
-      ];
+  logout(){
+    localStorage.clear()
+    this.router.navigate([''])
   }
 }

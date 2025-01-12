@@ -3,6 +3,12 @@
         <ng-template pTemplate="start">
             <img src="assets/images/seemLogo.jpg" height="40" class="mr-2" />
         </ng-template>
+        <ng-template pTemplate='end'>
+            <div class="avatar">
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                <span role="button" (click)="logout()"><i class="pi pi-sign-out" style="cursor: pointer;"></i></span>
+            </div>
+        </ng-template>
     </p-menubar>
     
 </div>

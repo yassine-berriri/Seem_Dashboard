@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDashboardComponent } from './core/admin-dashboard/admin-dashboard.component';  
+import { AuthInterceptorService } from './shared/services/auth-interceptor-service';
 
 
 
@@ -30,6 +31,7 @@ import { AdminDashboardComponent } from './core/admin-dashboard/admin-dashboard.
     BrowserAnimationsModule,
   ],
   providers: [
+    {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,34 @@
 <app-menu-bar></app-menu-bar>
+<div class="card">
+    <p-table
+        [value]="users"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">Nom</th>
+                <th style="width:25%">Age</th>
+                <th style="width:25%">Bio</th>
+                <th style="width:25%">Pays</th>
+                <th style="width:25%">Statut</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.bio }}</td>
+                <td>{{ user.country}}</td>
+                <td>
+                    <span role="button" style="cursor: pointer;" (click)="toggleStatus({email : user.email, isBlocked: user.blocked})"><i class="pi pi-circle-on" *ngIf="!user.blocked" style="color: green "></i></span>
+                    <span role="button" style="cursor: pointer;" (click)="toggleStatus({email : user.email, isBlocked: user.blocked})" ><i class="pi pi-ban" *ngIf="user.blocked" style="color: #b40404"></i></span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-toast></p-toast>

@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { AdminService } from '../../services/adminService';
 import { MessageService } from 'primeng/api';
-// import { Toast } from 'primeng/toast';
-// import { Ripple } from 'primeng/ripple';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +12,7 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent {
   loginForm!:FormGroup;
 
-  constructor( private formBuilder : FormBuilder, private adminservice : AdminService, private messageService : MessageService){
+  constructor( private formBuilder : FormBuilder, private adminservice : AdminService, private messageService : MessageService, private router : Router){
     this.loginForm = formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,6}$/)]],
       password:  ['', Validators.required]
@@ -26,12 +24,16 @@ export class LoginComponent {
       console.log(this.loginForm.value);
       this.adminservice.login(this.loginForm.value).subscribe({
         next: (data) => {
-          this.messageService.add({
-            severity: "success", 
-            summary: "Connection réussite", 
-            detail: "Connection avec succèss", 
-            life:3000
-          })
+          if(data.token){
+            localStorage.setItem('token', data.token)
+            this.router.navigate(['admin-dashboard']);
+            this.messageService.add({
+              severity: "success", 
+              summary: "Connection réussite", 
+              detail: "Connection avec succèss", 
+              life:3000
+            })
+          }
         },
         error: (error) => {
           console.log('login Error',error)
